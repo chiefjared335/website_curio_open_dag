@@ -1,0 +1,399 @@
+/* =========================================================
+   STYLE.CSS — alle opmaak voor de opleidingspagina
+   Kleuren en fonts staan bovenaan als variabelen (:root).
+   Pas die aan en de hele site verandert mee.
+   ========================================================= */
+
+:root{
+  /* --- Kleuren: pas hier het kleurenschema aan --- */
+  --color-ink:        #212121;   /* hoofdtekstkleur */
+  --color-muted:      #62666b;   /* subtekst / beschrijvingen */
+  --color-bg:         #ffffff;   /* paginaachtergrond */
+  --color-panel:      #f5f4f1;   /* lichte vakken/kaarten */
+  --color-border:     #e2e0da;   /* lijntjes en randen */
+  --color-accent:     #a1462f;   /* hoofdaccentkleur (knoppen, links) */
+  --color-accent-dark:#7c3520;   /* hover-status van de accentkleur */
+
+  /* --- Fonts: pas hier het lettertype aan --- */
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body:    "Inter", -apple-system, Segoe UI, Arial, sans-serif;
+
+  /* --- Layout --- */
+  --max-width: 1100px;
+  --radius: 4px;
+}
+
+/* ---------- Basis ---------- */
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3{
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 .5em;
+  color: var(--color-ink);
+}
+
+h1{ font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 500; }
+h2{ font-size: clamp(1.5rem, 2.4vw, 2rem); }
+h3{ font-size: 1.05rem; font-weight: 600; }
+
+p{ margin: 0 0 1em; color: var(--color-muted); }
+
+a{ color: var(--color-accent); text-decoration: none; }
+a:hover{ color: var(--color-accent-dark); }
+
+img{ max-width: 100%; display: block; }
+
+.wrap{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow{
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin: 0 0 8px;
+}
+
+.section-intro{
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+section{
+  padding: 72px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.btn{
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: .95rem;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover{ background: var(--color-accent-dark); color: #fff; }
+
+.btn-outline{
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--color-ink);
+}
+.btn-outline:hover{ background: var(--color-ink); color: #fff; }
+
+/* ---------- Nav ---------- */
+.site-header{
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+.site-header .wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.logo{
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.nav-links{
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a{
+  color: var(--color-ink);
+  font-size: .92rem;
+  font-weight: 500;
+}
+
+/* ---------- Hero ---------- */
+.hero .wrap{
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 48px;
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.hero p.lead{
+  font-size: 1.1rem;
+  max-width: 46ch;
+}
+.hero-image{
+  aspect-ratio: 4/3;
+  background: var(--color-panel);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.hero-image img{ width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Vakken grid ---------- */
+.subjects-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.subject-card{
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.subject-card h3{ margin-bottom: 6px; }
+.subject-card p{ font-size: .92rem; margin: 0; }
+
+/* ---------- Rooster + blokken (2 kolommen) ---------- */
+.two-col{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.schedule-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: .85rem;
+}
+.schedule-table th, .schedule-table td{
+  border: 1px solid var(--color-border);
+  padding: 10px 8px;
+  text-align: center;
+}
+.schedule-table th{
+  background: var(--color-panel);
+  font-weight: 600;
+}
+
+.blocks-row{
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.block-chip{
+  flex: 1;
+  text-align: center;
+  padding: 18px 10px;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+/* ---------- Versnellen (pad-diagram) ---------- */
+.path-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.path-node{
+  padding: 12px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-panel);
+  font-size: .88rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.path-node.accent{
+  border: 1px dashed var(--color-accent);
+  background: #fff;
+}
+.path-line{
+  flex: 1;
+  min-width: 24px;
+  height: 1px;
+  background: var(--color-border);
+}
+.tag-pill{
+  font-size: .72rem;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 6px;
+}
+
+/* ---------- Carousel ---------- */
+.carousel{
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-top: 16px;
+  padding-bottom: 8px;
+}
+.carousel-item{
+  flex: 0 0 280px;
+  aspect-ratio: 3/2;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-panel);
+  scroll-snap-align: start;
+}
+.carousel-item img{ width: 100%; height: 100%; object-fit: cover; }
+.dots{ display:flex; gap:6px; justify-content:center; margin-top:16px; }
+.dot{ width:6px; height:6px; border-radius:50%; background: var(--color-border); }
+.dot.active{ background: var(--color-accent); }
+
+/* ---------- Na de opleiding (iconenrij) ---------- */
+.outcomes-row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+  margin-top: 16px;
+}
+.outcome-icon{
+  width: 44px; height: 44px;
+  margin: 0 auto 12px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50%;
+}
+.outcomes-row p{ font-size: .88rem; margin: 0; }
+
+/* ---------- Jaarplanning / tijdlijn ---------- */
+.timeline{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 24px 0;
+}
+.timeline::before{
+  content: "";
+  position: absolute;
+  top: 4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--color-border);
+}
+.t-point{
+  text-align: center;
+  font-size: .82rem;
+  max-width: 110px;
+  color: var(--color-muted);
+  position: relative;
+}
+.t-dot{
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin: 0 auto 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Drie-koloms info (huiswerk / sfeer / groepen) ---------- */
+.info-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.info-card{
+  padding: 22px;
+  background: var(--color-panel);
+  border-radius: var(--radius);
+}
+
+/* ---------- Regel-blok (zak/slaag) ---------- */
+.rule-box{
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--color-panel);
+  margin-top: 16px;
+}
+
+/* ---------- Testimonial ---------- */
+.quote-box{
+  border-left: 3px solid var(--color-accent);
+  padding: 20px 28px;
+  margin-top: 16px;
+  background: var(--color-panel);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.quote-box p.quote-text{
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  font-style: italic;
+}
+.quote-author{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .85rem;
+  color: var(--color-muted);
+}
+.avatar{
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+/* ---------- Footer ---------- */
+footer{
+  padding: 48px 0;
+  background: var(--color-panel);
+}
+footer .wrap{
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+}
+footer h4{
+  font-size: .85rem;
+  margin: 0 0 12px;
+}
+footer ul{
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+footer a{ color: var(--color-muted); font-size: .88rem; }
+footer a:hover{ color: var(--color-accent); }
+
+/* ---------- Responsief: mobiel ---------- */
+@media (max-width: 800px){
+  .hero .wrap{ grid-template-columns: 1fr; }
+  .subjects-grid{ grid-template-columns: 1fr 1fr; }
+  .two-col{ grid-template-columns: 1fr; }
+  .outcomes-row{ grid-template-columns: 1fr 1fr; }
+  .info-grid{ grid-template-columns: 1fr; }
+  footer .wrap{ grid-template-columns: 1fr; }
+  .nav-links{ display: none; } /* eenvoudig: verberg menu op mobiel, evt. later hamburger toevoegen */
+}
+@media (max-width: 520px){
+  .subjects-grid{ grid-template-columns: 1fr; }
+  .outcomes-row{ grid-template-columns: 1fr 1fr; }
+}
