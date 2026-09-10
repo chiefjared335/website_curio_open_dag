@@ -96,17 +96,18 @@ $testimonials = [
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="wrap">
-      <div>
-        <p class="eyebrow">Opleiding &middot; eerste jaar</p>
-        <h1>Zo ziet je eerste jaar eruit</h1>
-        <p class="lead">Korte, wervende introductie van de opleiding: wat maakt dit eerste jaar bijzonder, en waarom past het bij jou.</p>
-        <a href="#contact" class="btn">Meld je aan voor de open dag</a>
-      </div>
-      <div class="hero-image">
-        <!-- Vervang door een echte foto: <img src="images/hero.jpg" alt=""> -->
-        <img src="images/hero.jpg" alt="Sfeerbeeld van de opleiding" onerror="this.style.display='none'">
-      </div>
+    <!-- Achtergrondvideo: zet je bestand in /images en pas de src hieronder aan.
+         poster = het beeld dat getoond wordt zolang de video nog laadt. -->
+    <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg">
+      <source src="videos/opleiding.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="wrap hero-content">
+      <p class="eyebrow">Opleiding &middot; eerste jaar</p>
+      <h1>Zo ziet je eerste jaar eruit</h1>
+      <p class="lead">Korte, wervende introductie van de opleiding: wat maakt dit eerste jaar bijzonder, en waarom past het bij jou.</p>
+      <a href="#contact" class="btn">Meld je aan voor de open dag</a>
     </div>
   </section>
 

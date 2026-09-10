@@ -135,26 +135,53 @@ section{
   font-weight: 500;
 }
 
-/* ---------- Hero ---------- */
-.hero .wrap{
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 48px;
-  align-items: center;
-  padding-top: 64px;
-  padding-bottom: 64px;
-}
-.hero p.lead{
-  font-size: 1.1rem;
-  max-width: 46ch;
-}
-.hero-image{
-  aspect-ratio: 4/3;
-  background: var(--color-panel);
-  border-radius: var(--radius);
+/* ---------- Hero (achtergrondvideo) ---------- */
+.hero{
+  position: relative;
   overflow: hidden;
+  min-height: 640px;           /* hoogte van het hele herogedeelte, tot aan sectie 1 */
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
-.hero-image img{ width: 100%; height: 100%; object-fit: cover; }
+
+/* De video vult de volledige hero-sectie en ligt achter alles */
+.hero-video{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* vult altijd de ruimte, ongeacht videoverhouding */
+  z-index: 0;
+  pointer-events: none;        /* video is puur decoratief, niet klikbaar */
+}
+
+/* Donkere laag over de video zodat tekst altijd leesbaar blijft */
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,15,15,.45), rgba(15,15,15,.55));
+  z-index: 1;
+}
+
+/* Tekst ligt bovenop video + overlay */
+.hero-content{
+  position: relative;
+  z-index: 2;
+  padding: 96px 32px;
+  max-width: 640px;
+}
+.hero-content .eyebrow{ color: #fff; opacity: .85; }
+.hero-content h1{ color: #fff; }
+.hero-content p.lead{
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.9);
+}
+
+@media (max-width: 800px){
+  .hero{ min-height: 480px; }
+  .hero-content{ padding: 64px 24px; }
+}
 
 /* ---------- Vakken grid ---------- */
 .subjects-grid{
@@ -385,7 +412,6 @@ footer a:hover{ color: var(--color-accent); }
 
 /* ---------- Responsief: mobiel ---------- */
 @media (max-width: 800px){
-  .hero .wrap{ grid-template-columns: 1fr; }
   .subjects-grid{ grid-template-columns: 1fr 1fr; }
   .two-col{ grid-template-columns: 1fr; }
   .outcomes-row{ grid-template-columns: 1fr 1fr; }
