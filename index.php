@@ -14,7 +14,7 @@
 
 // ---- 1. Vakken in het eerste jaar ----
 $vakken = [
-  ["naam" => "Vaknaam 1", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
+  ["naam" => "vaknaam 1", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
   ["naam" => "Vaknaam 2", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
   ["naam" => "Vaknaam 3", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
   ["naam" => "Vaknaam 4", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
