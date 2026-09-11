@@ -25,9 +25,10 @@ $vakken = [
 // ---- 2. Voorbeeldrooster (dagen als kolommen, uren als rijen) ----
 $rooster_dagen = ["Ma", "Di", "Wo", "Do", "Vr"];
 $rooster_uren = [
-  ["09:00", "Vak A", "Vak B", "Vak C", "Vak A", "Vak D"],
-  ["10:30", "Vak B", "",      "Vak A", "Vak C", "Vak B"],
+  ["08:30", "mtu", "Vak B", "Vak C", "Vak A", "Vak D"],
+  ["09:30-11:15", "fundament web 1", "",      "Vak A", "Vak C", "Vak B"],
   ["13:00", "Vak D", "Vak A", "",      "Vak B", "Vak C"],
+  ["14:30", "",      "Vak C", "Vak D", "",      "Vak A"],
 ];
 
 // ---- 3. Blokken ----
@@ -82,7 +83,7 @@ $testimonials = [
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <div class="wrap">
-      <div class="logo">Logo</div>
+      <div class="logo">Curio</div>
       <ul class="nav-links">
         <li><a href="#vakken">Vakken</a></li>
         <li><a href="#rooster">Rooster</a></li>
