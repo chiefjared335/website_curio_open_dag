@@ -14,22 +14,18 @@
 
 // ---- 1. Vakken in het eerste jaar ----
 $vakken = [
-  ["naam" => "vaknaam 1", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
-  ["naam" => "Vaknaam 2", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
-  ["naam" => "Vaknaam 3", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
-  ["naam" => "Vaknaam 4", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
-  ["naam" => "Vaknaam 5", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
-  ["naam" => "Vaknaam 6", "beschrijving" => "Korte omschrijving van dit vak in één of twee zinnen."],
+  ["naam" => "Web(Websites)", "beschrijving" => "Je leert bij dit vak dingen zoals html, css en php."],
+  ["naam" => "mtu/mtg", "beschrijving" => "mentoruur leer je dingen zoals cv maken en bij mentorgespreken ga je in gesprek met je mentor."],
+  ["naam" => "burgerschap", "beschrijving" => "Je leert over burgerschap en maatschappelijke verantwoordelijkheid."],
+  ["naam" => "keuzedeel", "beschrijving" => "een vak naar eigen keuze."],
+  ["naam" => "loopbaan", "beschrijving" => ""],
 ];
 
-// ---- 2. Voorbeeldrooster (dagen als kolommen, uren als rijen) ----
-$rooster_dagen = ["Ma", "Di", "Wo", "Do", "Vr"];
-$rooster_uren = [
-  ["08:30", "mtu", "Vak B", "Vak C", "Vak A", "Vak D"],
-  ["09:30-11:15", "fundament web 1", "",      "Vak A", "Vak C", "Vak B"],
-  ["13:00", "Vak D", "Vak A", "",      "Vak B", "Vak C"],
-  ["14:30", "",      "Vak C", "Vak D", "",      "Vak A"],
-];
+// ---- 2. Voorbeeldrooster ----
+// Het rooster zelf (data + weergave) staat in het losse bestand
+// rooster-widget.php — dat maakt het makkelijk om alleen dát blok te
+// kopiëren naar een andere pagina. Hier wordt het bestand ingeladen.
+require __DIR__ . '/rooster-widget.php';
 
 // ---- 3. Blokken ----
 $blokken = ["Blok 1", "Blok 2", "Blok 3", "Blok 4"];
@@ -83,7 +79,7 @@ $testimonials = [
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <div class="wrap">
-      <div class="logo">Curio</div>
+      <div class="logo">Logo</div>
       <ul class="nav-links">
         <li><a href="#vakken">Vakken</a></li>
         <li><a href="#rooster">Rooster</a></li>
@@ -95,7 +91,7 @@ $testimonials = [
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO (met achtergrondvideo) ============ -->
   <section class="hero">
     <!-- Achtergrondvideo: zet je bestand in /images en pas de src hieronder aan.
          poster = het beeld dat getoond wordt zolang de video nog laadt. -->
@@ -133,33 +129,15 @@ $testimonials = [
 
   <!-- ============ ROOSTER + BLOKKEN ============ -->
   <section id="rooster">
-    <div class="wrap two-col">
+    <div class="wrap">
       <div>
         <p class="eyebrow">Sectie 2</p>
         <h2>Voorbeeldrooster</h2>
-        <p>Een voorbeeldweek van een eerstejaars (geen echte namen of docenten).</p>
-        <table class="schedule-table">
-          <thead>
-            <tr>
-              <th></th>
-              <?php foreach ($rooster_dagen as $dag): ?>
-                <th><?= htmlspecialchars($dag) ?></th>
-              <?php endforeach; ?>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($rooster_uren as $rij): ?>
-              <tr>
-                <?php foreach ($rij as $i => $cel): ?>
-                  <?= $i === 0 ? "<th>".htmlspecialchars($cel)."</th>" : "<td>".htmlspecialchars($cel)."</td>" ?>
-                <?php endforeach; ?>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+        <p>Een voorbeeld van hoe een lesweek in het eerste jaar eruitziet (geen echte namen van studenten). Op woensdag en vrijdag lopen sommige lessen gelijktijdig — die staan naast elkaar binnen dezelfde dag.</p>
+        <?= render_rooster_widget() ?>
       </div>
 
-      <div id="versnellen">
+      <div id="versnellen" class="section-block-spaced">
         <p class="eyebrow">Sectie 3</p>
         <h2>Indeling van de blokken</h2>
         <p>Het schooljaar is opgedeeld in blokken.</p>
