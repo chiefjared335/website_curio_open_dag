@@ -35,7 +35,7 @@ $vakken = [
 require __DIR__ . '/rooster-widget.php';
 
 // ---- 3. Blokken ----
-$blokken = ["Blok A", "Blok B", "Blok C", "Blok D", "Blok E", "Blok F", "Blok G", "Blok H"];
+$blokken = ["level 1(de fundementals)", "level 2 + level 3(de details)"];
 
 // ---- 4. Foto-carrousel (zet je eigen bestanden in de map /images) ----
 $carousel_fotos = [
@@ -60,6 +60,7 @@ $jaarplanning = [
   "Start schooljaar",
   "Herfstvakantie",
   "Kerstvakantie",
+  "start blok b",
   "Voorjaarsvakantie",
   "Meivakantie",
   "Zomervakantie",
@@ -67,7 +68,7 @@ $jaarplanning = [
 
 // ---- 7. Testimonial(s) — geen namen, geen foto's van studenten ----
 $testimonials = [
-  ["quote" => "Zet hier een korte, anonieme quote van een (oud-)student over de opleiding.", "auteur" => "Anonieme student, 1e jaar"],
+  ["quote" => "De opleiding is best leuk. Het is hard werken maar je leert veel over het coderen.", "auteur" => "Anonieme student, 2e jaar"],
 ];
 ?>
 <!DOCTYPE html>
@@ -90,15 +91,13 @@ $testimonials = [
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <div class="wrap">
-      <div class="logo">curio</div>
+      <div class="logo"><a href="https://www.curio.nl/mbo/ict/ict/software-developer"><img  src="images/test.png" alt="Curio Logo" ></a></div>
       <ul class="nav-links">
         <li><a href="#vakken">Vakken</a></li>
         <li><a href="#rooster">Rooster</a></li>
         <li><a href="#versnellen">Versnellen</a></li>
         <li><a href="#na-opleiding">Na de opleiding</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="#contact" class="btn-outline">Open dag</a>
     </div>
   </header>
 
@@ -114,8 +113,6 @@ $testimonials = [
     <div class="wrap hero-content">
       <p class="eyebrow">Opleiding &middot; eerste jaar</p>
       <h1>Zo ziet je eerste jaar eruit</h1>
-      <p class="lead">Korte, wervende introductie van de opleiding: wat maakt dit eerste jaar bijzonder, en waarom past het bij jou.</p>
-      <a href="#contact" class="btn">Meld je aan voor de open dag</a>
     </div>
   </section>
 
@@ -144,14 +141,14 @@ $testimonials = [
       <div>
         <p class="eyebrow">Sectie 2</p>
         <h2>Voorbeeldrooster</h2>
-        <p>Een voorbeeld van hoe een lesweek in het eerste jaar eruitziet (geen echte namen van studenten). Op woensdag en vrijdag lopen sommige lessen gelijktijdig — die staan naast elkaar binnen dezelfde dag.</p>
+        <p>Een voorbeeld van hoe een lesweek in het eerste jaar eruitziet. Op woensdag en vrijdag lopen sommige lessen gelijktijdig — die staan naast elkaar binnen dezelfde dag.</p>
         <?= render_rooster_widget() ?>
       </div>
 
       <div id="versnellen" class="section-block-spaced">
         <p class="eyebrow">Sectie 3</p>
-        <h2>Indeling van de blokken</h2>
-        <p>Het schooljaar is opgedeeld in blokken.</p>
+        <h2>Indeling van de levels</h2>
+        <p>Het schooljaar is opgedeeld in levels.</p>
         <div class="blocks-row">
           <?php foreach ($blokken as $blok): ?>
             <div class="block-chip"><?= htmlspecialchars($blok) ?></div>
@@ -207,7 +204,6 @@ $testimonials = [
       </div>
       <div class="dots">
         <?php foreach ($carousel_fotos as $i => $foto): ?>
-          <div class="dot<?= $i === 0 ? ' active' : '' ?>"></div>
         <?php endforeach; ?>
       </div>
     </div>
@@ -261,35 +257,25 @@ $testimonials = [
       <div class="info-grid">
         <div class="info-card">
           <h3>Huiswerk</h3>
-          <p>Korte uitleg over hoeveel huiswerk je gemiddeld krijgt en hoe dat werkt.</p>
+          <p>Er is gemiddeld 2-3 uur huiswerk per week.</p>
         </div>
         <div class="info-card">
           <h3>Sfeer op de afdeling</h3>
-          <p>Korte uitleg over de sfeer tussen studenten en docenten op de afdeling.</p>
+          <p>De sfeer op de afdeling is vriendelijk en ondersteunend. zolang de studenten zich respectvol en professioneel gedragen. </p>
         </div>
         <div class="info-card">
           <h3>Werken in groepen</h3>
-          <p>Korte uitleg over hoe groepswerk en samenwerking eruitzien in het eerste jaar.</p>
+          <p>Je werkt vaak in groepen bij projecten. Daar leer je goed samen te werken en hoe github samenwerken werkt</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ZAK/SLAAG-REGELING ============ -->
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Sectie 9</p>
-      <h2>Zak-/slaagregeling bij de generieke vakken</h2>
-      <div class="rule-box">
-        <p style="margin:0;">Leg hier kort en helder uit hoe de zak-/slaagregeling werkt voor de generieke vakken.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ TESTIMONIAL ============ -->
   <section>
     <div class="wrap">
-      <p class="eyebrow">Sectie 10</p>
+      <p class="eyebrow">Sectie 9</p>
       <h2>Wat studenten van de opleiding vinden</h2>
       <?php foreach ($testimonials as $t): ?>
         <div class="quote-box">
@@ -308,7 +294,7 @@ $testimonials = [
     <div class="wrap">
       <div>
         <div class="logo">curio</div>
-        <p style="margin-top:12px;">Korte introductiezin over de opleiding of school.</p>
+        <p style="margin-top:12px;">software development</p>
       </div>
       <div>
         <h4>Navigatie</h4>
