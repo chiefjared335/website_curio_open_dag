@@ -122,11 +122,14 @@ function render_rooster_widget() {
     <style>
       /* Alles hieronder is expres genest onder .rooster-widget, zodat het
          niet botst met bestaande CSS-classes op je eigen pagina. */
-      .rooster-widget{ font-family: Inter, Arial, sans-serif; }
+      /* Kleuren van de Curio-huisstijl. Wil je andere kleuren?
+         Pas de waarden hieronder aan — verder hoef je niets te doen. */
+      .rooster-widget{ font-family: Manrope, Inter, Arial, sans-serif; }
       .rooster-widget .rt-card{
-        background: #15171b;
-        border-radius: 8px;
-        padding: 16px 20px 24px;
+        background: #ffffff;
+        border: 2px solid #E3E1F0;
+        border-radius: 20px;
+        padding: 20px 24px 28px;
         overflow-x: auto;
       }
       .rooster-widget .rt-head-row,
@@ -144,12 +147,12 @@ function render_rooster_widget() {
         flex: 1;
         min-width: 210px;
         text-align: center;
-        font-size: .8rem;
-        font-weight: 600;
-        color: #e7e8ea;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-        border-bottom: 1px solid #2a2d33;
+        font-size: .85rem;
+        font-weight: 800;
+        color: #14145A;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #E3E1F0;
       }
       .rooster-widget .rt-body{ position: relative; }
       .rooster-widget .rt-times{
@@ -162,7 +165,8 @@ function render_rooster_widget() {
         left: 0;
         transform: translateY(-50%);
         font-size: .72rem;
-        color: #9a9fa6;
+        font-weight: 600;
+        color: #8A88A8;
         font-variant-numeric: tabular-nums;
       }
       .rooster-widget .rt-days{
@@ -173,7 +177,7 @@ function render_rooster_widget() {
         /* horizontale uurlijnen: elke 72px = 1 uur bij schaal 1.2 */
         background-image: repeating-linear-gradient(
           to bottom,
-          #23262c 0, #23262c 1px,
+          #ECEAF6 0, #ECEAF6 1px,
           transparent 1px, transparent 72px
         );
       }
@@ -197,22 +201,27 @@ function render_rooster_widget() {
         position: absolute;
         left: 2px;
         right: 2px;
-        background: #1f2329;
-        border: 1px solid #34383f;
-        border-radius: 4px;
-        padding: 6px 7px;
+        background: #F4F3FB;
+        border: 1px solid #E3E1F0;
+        border-left: 4px solid #E5007D;
+        border-radius: 10px;
+        padding: 7px 9px;
         overflow: hidden;
       }
+      /* Challenges en Masterclass krijgen een eigen steunkleur */
+      .rooster-widget .rt-lane:nth-child(2) .rt-event{ border-left-color: #00B3A4; }
+      .rooster-widget .rt-lane:nth-child(3) .rt-event{ border-left-color: #FFC531; }
       .rooster-widget .rt-title{
-        font-size: .74rem;
-        font-weight: 600;
-        color: #f4f4f2;
+        font-size: .76rem;
+        font-weight: 800;
+        color: #14145A;
         margin-bottom: 2px;
         line-height: 1.2;
       }
       .rooster-widget .rt-sub{
-        font-size: .65rem;
-        color: #c7cad0;
+        font-size: .66rem;
+        font-weight: 600;
+        color: #55557A;
         margin-bottom: 4px;
         white-space: nowrap;
         overflow: hidden;
@@ -223,14 +232,14 @@ function render_rooster_widget() {
         justify-content: space-between;
         gap: 4px;
         font-size: .62rem;
-        color: #c7cad0;
+        color: #55557A;
         white-space: nowrap;
         overflow: hidden;
       }
       .rooster-widget .rt-teacher span:last-child{ text-overflow: ellipsis; overflow: hidden; }
       .rooster-widget .rt-klas{
         font-size: .6rem;
-        color: #85898f;
+        color: #8A88A8;
         margin-top: 2px;
         white-space: nowrap;
         overflow: hidden;

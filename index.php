@@ -10,6 +10,8 @@
 
    Stijl (kleuren, fonts, layout) staat volledig in
    css/style.css — dat bestand raak je hier niet aan.
+   De opmaak volgt de Curio-huisstijl: diepblauw + felle
+   steunkleuren, ronde hoeken en pil-knoppen.
    ========================================================= */
 
 // ---- 1. Vakken in het eerste jaar ----
@@ -18,7 +20,12 @@ $vakken = [
   ["naam" => "mtu/mtg", "beschrijving" => "mentoruur leer je dingen zoals cv maken en bij mentorgespreken ga je in gesprek met je mentor."],
   ["naam" => "burgerschap", "beschrijving" => "Je leert over burgerschap en maatschappelijke verantwoordelijkheid."],
   ["naam" => "keuzedeel", "beschrijving" => "een vak naar eigen keuze."],
+  ["naam" => "challenges", "beschrijving" => "Projectmatig via sprints werken aan een challenge"],
+  ["naam" => "masterworks", "beschrijving" => "Losstaande lessen van circa 45-60 minuten over een specifiek onderwerp, gegeven naast de challenge."],
   ["naam" => "loopbaan", "beschrijving" => ""],
+  ["naam" => "Engels", "beschrijving" => ""],
+  ["naam" => "Nederlands", "beschrijving" => ""],
+  ["naam" => "Rekenen", "beschrijving" => ""],
 ];
 
 // ---- 2. Voorbeeldrooster ----
@@ -28,21 +35,24 @@ $vakken = [
 require __DIR__ . '/rooster-widget.php';
 
 // ---- 3. Blokken ----
-$blokken = ["Blok 1", "Blok 2", "Blok 3", "Blok 4"];
+$blokken = ["Blok A", "Blok B", "Blok C", "Blok D", "Blok E", "Blok F", "Blok G", "Blok H"];
 
 // ---- 4. Foto-carrousel (zet je eigen bestanden in de map /images) ----
 $carousel_fotos = [
-  "images/foto-1.jpg",
-  "images/foto-2.jpg",
-  "images/foto-3.jpg",
+  "images/nobellaan.png",
+  "images/code.png",
+  "images/code1.png",
+  "images/laptop.jpg",
+  "images/nobellaan1.png",
+  "images/sd.jpg",
 ];
 
 // ---- 5. Wat kun je na deze opleiding doen ----
 $uitstroom = [
-  "Vervolgopleiding A",
-  "Vervolgopleiding B",
-  "Beroep A",
-  "Beroep B",
+  "HBO-ICT / Informatica",
+  "HBO Software Engineering",
+  "Junior Software Developer",
+  "Junior Full-Stack Developer",
 ];
 
 // ---- 6. Jaarplanning & vakanties ----
@@ -65,11 +75,12 @@ $testimonials = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opleiding — eerstejaars</title>
+  <title>Open dag — softwareontwikkelaar | Curio</title>
 
-  <!-- Fonts: Fraunces voor koppen, Inter voor lopende tekst -->
+  <!-- Fonts: Manrope (vette, geometrische koppen zoals Curio) + Inter voor lopende tekst -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Losse CSS-map -->
   <link rel="stylesheet" href="css/style.css">
@@ -79,7 +90,7 @@ $testimonials = [
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <div class="wrap">
-      <div class="logo">Logo</div>
+      <div class="logo">curio</div>
       <ul class="nav-links">
         <li><a href="#vakken">Vakken</a></li>
         <li><a href="#rooster">Rooster</a></li>
@@ -95,7 +106,7 @@ $testimonials = [
   <section class="hero">
     <!-- Achtergrondvideo: zet je bestand in /images en pas de src hieronder aan.
          poster = het beeld dat getoond wordt zolang de video nog laadt. -->
-    <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.jpg">
+    <video class="hero-video" autoplay muted loop playsinline poster="images/hero-poster.png">
       <source src="videos/opleiding.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -185,12 +196,12 @@ $testimonials = [
       <p class="eyebrow">Sectie 5</p>
       <div class="section-intro">
         <h2>Sfeerbeelden</h2>
-        <p>Een impressie van de opleiding. Zet je eigen foto's in de map <code>/images</code> — geen herkenbare studenten of docenten.</p>
+        <p>Een impressie van de opleiding.</p>
       </div>
       <div class="carousel">
         <?php foreach ($carousel_fotos as $foto): ?>
           <div class="carousel-item">
-            <img src="<?= htmlspecialchars($foto) ?>" alt="Sfeerbeeld opleiding" onerror="this.parentElement.style.background='#e2e0da'; this.style.display='none'">
+            <img src="<?= htmlspecialchars($foto) ?>" alt="Sfeerbeeld opleiding" onerror="this.parentElement.style.background='#EDE9FF'; this.style.display='none'">
           </div>
         <?php endforeach; ?>
       </div>
@@ -296,7 +307,7 @@ $testimonials = [
   <footer id="contact">
     <div class="wrap">
       <div>
-        <div class="logo">Logo</div>
+        <div class="logo">curio</div>
         <p style="margin-top:12px;">Korte introductiezin over de opleiding of school.</p>
       </div>
       <div>

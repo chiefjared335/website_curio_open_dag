@@ -1,240 +1,310 @@
 /* =========================================================
-   STYLE.CSS — alle opmaak voor de opleidingspagina
+   STYLE.CSS — opmaak voor de opleidingspagina (Curio-stijl)
+   -----------------------------------------------------------
+   De look is gebaseerd op de huisstijl van Curio: diepblauw als
+   basis, felle steunkleuren (magenta, geel, mint), grote ronde
+   hoeken, pil-vormige knoppen en veel wit.
+
    Kleuren en fonts staan bovenaan als variabelen (:root).
-   Pas die aan en de hele site verandert mee.
+   Heb je de officiele hexcodes van Curio? Plak ze hieronder bij
+   --curio-blauw / --curio-magenta / --curio-geel / --curio-mint
+   en de hele site verandert mee.
    ========================================================= */
 
 :root{
-  /* --- Kleuren: pas hier het kleurenschema aan --- */
-  --color-ink:        #212121;   /* hoofdtekstkleur */
-  --color-muted:      #62666b;   /* subtekst / beschrijvingen */
-  --color-bg:         #ffffff;   /* paginaachtergrond */
-  --color-panel:      #f5f4f1;   /* lichte vakken/kaarten */
-  --color-border:     #e2e0da;   /* lijntjes en randen */
-  --color-accent:     #a1462f;   /* hoofdaccentkleur (knoppen, links) */
-  --color-accent-dark:#7c3520;   /* hover-status van de accentkleur */
+  /* --- Curio-kleuren --- */
+  --curio-blauw:   #14145A;   /* diepblauw: koppen, footer, blokken */
+  --curio-blauw-2: #1F1F86;   /* iets lichter blauw voor hover/lijnen */
+  --curio-magenta: #E5007D;   /* hoofdaccent: knoppen, links, dots */
+  --curio-magenta-dark:#B80064;
+  --curio-geel:    #FFC531;   /* steunkleur */
+  --curio-mint:    #00B3A4;   /* steunkleur */
+  --curio-lila:    #EDE9FF;   /* zachte vlakken */
 
-  /* --- Fonts: pas hier het lettertype aan --- */
-  --font-heading: "Fraunces", Georgia, serif;
-  --font-body:    "Inter", -apple-system, Segoe UI, Arial, sans-serif;
+  /* --- Afgeleide rollen (gebruikt in de rest van het bestand) --- */
+  --color-ink:        var(--curio-blauw);
+  --color-muted:      #55557A;
+  --color-bg:         #ffffff;
+  --color-panel:      #F4F3FB;
+  --color-border:     #E3E1F0;
+  --color-accent:     var(--curio-magenta);
+  --color-accent-dark:var(--curio-magenta-dark);
+
+  /* --- Fonts --- */
+  --font-heading: "Manrope", "Segoe UI", Arial, sans-serif;
+  --font-body:    "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
 
   /* --- Layout --- */
-  --max-width: 1100px;
-  --radius: 4px;
-
+  --max-width: 1180px;
+  --radius:    20px;   /* standaard ronding */
+  --radius-lg: 32px;   /* grote vlakken */
+  --radius-pill: 999px;
 }
+
 /* ---------- Basis ---------- */
 *{ box-sizing: border-box; }
 
+html{ scroll-behavior: smooth; }
+
 body{
   margin: 0;
-  font-family: Fellix, Helvetica Neue, Helvetica, Arial, sans-serif;;
+  font-family: var(--font-body);
   color: var(--color-ink);
   background: var(--color-bg);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3{
-  font-family: Fellix, Helvetica Neue, Helvetica, Arial, sans-serif;;
-  font-weight: 600;
-  line-height: 1.15;
-  margin: 0 0 .5em;
+h1, h2, h3, h4{
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  margin: 0 0 .45em;
   color: var(--color-ink);
 }
 
-h1{ font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 500; }
-h2{ font-size: clamp(1.5rem, 2.4vw, 2rem); }
-h3{ font-size: 1.05rem; font-weight: 600; }
+h1{ font-size: clamp(2.6rem, 6vw, 4.6rem); }
+h2{ font-size: clamp(1.8rem, 3.4vw, 2.9rem); }
+h3{ font-size: 1.15rem; letter-spacing: -.01em; }
 
 p{ margin: 0 0 1em; color: var(--color-muted); }
 
 a{ color: var(--color-accent); text-decoration: none; }
 a:hover{ color: var(--color-accent-dark); }
 
+:focus-visible{
+  outline: 3px solid var(--curio-mint);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 img{ max-width: 100%; display: block; }
 
 .wrap{
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 28px;
 }
 
+/* Klein gekleurd labeltje boven een kop */
 .eyebrow{
+  display: inline-block;
+  font-family: var(--font-heading);
   font-size: .8rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--curio-blauw);
+  background: var(--curio-geel);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin: 0 0 16px;
 }
 
 .section-intro{
-  max-width: 640px;
-  margin-bottom: 32px;
+  max-width: 60ch;
+  margin-bottom: 40px;
 }
+.section-intro p{ font-size: 1.05rem; }
 
 section{
-  padding: 72px 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 88px 0;
 }
 
+/* Afwisselend gekleurde secties — typisch Curio: grote kleurvlakken.
+   De volgorde volgt index.php: 1 hero, 2 vakken, 3 rooster, 4 versnellen,
+   5 sfeerbeelden, 6 na de opleiding, 7 jaarplanning, 8 huiswerk,
+   9 zak/slaag, 10 testimonial. */
+section:nth-of-type(3),
+section:nth-of-type(7){
+  background: var(--color-panel);
+}
+section:nth-of-type(5){
+  background: var(--curio-lila);
+}
+
+/* ---------- Knoppen ---------- */
 .btn{
   display: inline-block;
-  padding: 12px 24px;
+  padding: 15px 32px;
   background: var(--color-accent);
   color: #fff;
-  border-radius: var(--radius);
-  font-weight: 600;
-  font-size: .95rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
 }
-.btn:hover{ background: var(--color-accent-dark); color: #fff; }
+.btn:hover{ background: var(--color-accent-dark); color: #fff; transform: translateY(-2px); }
 
 .btn-outline{
   display: inline-block;
-  padding: 10px 22px;
-  border: 1px solid var(--color-ink);
-  border-radius: var(--radius);
-  font-weight: 600;
+  padding: 11px 24px;
+  border: 2px solid var(--curio-blauw);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-heading);
+  font-weight: 700;
   font-size: .9rem;
-  color: var(--color-ink);
+  color: var(--curio-blauw);
+  transition: background .15s ease, color .15s ease;
 }
-.btn-outline:hover{ background: var(--color-ink); color: #fff; }
+.btn-outline:hover{ background: var(--curio-blauw); color: #fff; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; }
+  html{ scroll-behavior: auto; }
+}
 
 /* ---------- Nav ---------- */
 .site-header{
-  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  background: #fff;
-  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
   z-index: 10;
 }
 .site-header .wrap{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 .logo{
-  font-family: Fellix, Helvetica Neue, Helvetica, Arial, sans-serif;;
-  font-weight: 600;
-  font-size: 2rem;
-  color: rgba(255,204,0,1);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -.04em;
+  color: var(--curio-blauw);
+  text-transform: lowercase;
 }
 .nav-links{
   display: flex;
-  gap: 58px;
+  gap: 26px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .nav-links a{
-  color: var(--color-ink);
-  font-size: .92rem;
-  font-weight: 500;
+  color: var(--curio-blauw);
+  font-size: .95rem;
+  font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover{
+  color: var(--curio-blauw);
+  border-bottom-color: var(--curio-magenta);
 }
 
-/* ---------- Hero (achtergrondvideo) ---------- */
+/* ---------- Hero ---------- */
 .hero{
   position: relative;
   overflow: hidden;
-  min-height: 640px;           /* hoogte van het hele herogedeelte, tot aan sectie 1 */
+  min-height: 76vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 0;
-  background: #78034b;
+  background: var(--curio-blauw);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
-/* De video vult de volledige hero-sectie en ligt achter alles */
 .hero-video{
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;           /* vult altijd de ruimte, ongeacht videoverhouding */
+  object-fit: cover;
   z-index: 0;
-  pointer-events: none;        /* video is puur decoratief, niet klikbaar */
+  pointer-events: none;
 }
 
-/* Donkere laag over de video zodat tekst altijd leesbaar blijft */
+/* Blauwe laag over de video zodat tekst leesbaar blijft */
 .hero-overlay{
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,15,15,.45), rgba(15,15,15,.55));
+  background: linear-gradient(190deg, rgba(20,20,90,.35) 0%, rgba(20,20,90,.82) 78%);
   z-index: 1;
 }
 
-/* Tekst ligt bovenop video + overlay */
 .hero-content{
   position: relative;
   z-index: 2;
-  padding: 96px 32px;
-  max-width: 640px;
+  padding: 110px 28px 84px;
+  max-width: 900px;
 }
-.hero-content .eyebrow{ color: #fff; opacity: .85; }
+.hero-content .eyebrow{
+  background: var(--curio-magenta);
+  color: #fff;
+}
 .hero-content h1{ color: #fff; }
 .hero-content p.lead{
-  font-size: 1.1rem;
-  color: rgba(255,255,255,.9);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  color: rgba(255,255,255,.92);
+  max-width: 54ch;
+  margin-bottom: 32px;
 }
 
 @media (max-width: 800px){
-  .hero{ min-height: 480px; }
-  .hero-content{ padding: 64px 24px; }
+  .hero{ min-height: 520px; }
+  .hero-content{ padding: 80px 24px 56px; }
 }
 
 /* ---------- Vakken grid ---------- */
 .subjects-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 .subject-card{
   background: var(--color-panel);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 22px;
+  padding: 26px 24px;
 }
-.subject-card h3{ margin-bottom: 6px; }
-.subject-card p{ font-size: .92rem; margin: 0; }
+/* Kleurvlakken zoals in de Curio-huisstijl: de kaarten wisselen van kleur */
+.subject-card:nth-child(4n+1){ background: var(--curio-blauw); }
+.subject-card:nth-child(4n+1) h3{ color: #fff; }
+.subject-card:nth-child(4n+1) p{ color: rgba(255,255,255,.82); }
+.subject-card:nth-child(4n+2){ background: var(--curio-geel); }
+.subject-card:nth-child(4n+3){ background: var(--curio-lila); }
+.subject-card:nth-child(4n+4){ background: var(--curio-mint); }
+.subject-card:nth-child(4n+4) h3{ color: #fff; }
+.subject-card:nth-child(4n+4) p{ color: rgba(255,255,255,.9); }
 
-/* ---------- Rooster + blokken (2 kolommen) ---------- */
+.subject-card h3{ margin-bottom: 6px; }
+.subject-card p{ font-size: .95rem; margin: 0; }
+
+.section-block-spaced{ margin-top: 72px; }
+
+/* ---------- Rooster + blokken ---------- */
 .two-col{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
 }
-.schedule-table{
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 16px;
-  font-size: .85rem;
-}
-.schedule-table th, .schedule-table td{
-  border: 1px solid var(--color-border);
-  padding: 10px 8px;
-  text-align: center;
-}
-.schedule-table th{
-  background: var(--color-panel);
-  font-weight: 600;
-}
+/* Let op: de styling van het voorbeeldrooster zit niet hier, maar
+   ingebouwd in rooster-widget.php (zelfstandig, makkelijk te kopieren). */
 
 .blocks-row{
   display: flex;
-  gap: 12px;
-  margin-top: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 .block-chip{
-  flex: 1;
+  flex: 1 1 110px;
   text-align: center;
   padding: 18px 10px;
-  border: 1px solid var(--color-ink);
+  background: #fff;
+  border: 2px solid var(--curio-blauw);
   border-radius: var(--radius);
-  font-weight: 600;
-  font-size: .92rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--curio-blauw);
 }
 
 /* ---------- Versnellen (pad-diagram) ---------- */
@@ -242,35 +312,38 @@ section{
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 .path-node{
-  padding: 12px 18px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
   background: var(--color-panel);
-  font-size: .88rem;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--curio-blauw);
   white-space: nowrap;
 }
 .path-node.accent{
-  border: 1px dashed var(--color-accent);
-  background: #fff;
+  background: var(--curio-blauw);
+  color: #fff;
 }
 .path-line{
   flex: 1;
   min-width: 24px;
-  height: 1px;
+  height: 3px;
+  border-radius: 3px;
   background: var(--color-border);
 }
+.path-row:last-of-type .path-line{ background: var(--curio-magenta); }
 .tag-pill{
-  font-size: .72rem;
-  background: var(--color-accent);
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-left: 6px;
+  font-size: .75rem;
+  background: var(--curio-geel);
+  color: var(--curio-blauw);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-left: 8px;
 }
 
 /* ---------- Carousel ---------- */
@@ -280,148 +353,178 @@ section{
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   margin-top: 16px;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
 }
 .carousel-item{
-  flex: 0 0 280px;
-  aspect-ratio: 3/2;
+  flex: 0 0 320px;
+  aspect-ratio: 4/3;
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--color-panel);
+  background: #fff;
   scroll-snap-align: start;
 }
 .carousel-item img{ width: 100%; height: 100%; object-fit: cover; }
-.dots{ display:flex; gap:6px; justify-content:center; margin-top:16px; }
-.dot{ width:6px; height:6px; border-radius:50%; background: var(--color-border); }
-.dot.active{ background: var(--color-accent); }
+.dots{ display:flex; gap:8px; justify-content:center; margin-top:18px; }
+.dot{ width:8px; height:8px; border-radius:50%; background: #CFC9EA; }
+.dot.active{ background: var(--curio-magenta); }
 
-/* ---------- Na de opleiding (iconenrij) ---------- */
+/* ---------- Na de opleiding ---------- */
 .outcomes-row{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  text-align: center;
+  gap: 18px;
   margin-top: 16px;
 }
-.outcome-icon{
-  width: 44px; height: 44px;
-  margin: 0 auto 12px;
-  border: 1.5px solid var(--color-accent);
-  border-radius: 50%;
+.outcomes-row > div{
+  background: var(--color-panel);
+  border-radius: var(--radius);
+  padding: 28px 22px;
 }
-.outcomes-row p{ font-size: .88rem; margin: 0; }
+.outcome-icon{
+  width: 46px; height: 46px;
+  margin: 0 0 16px;
+  border-radius: 50%;
+  background: var(--curio-magenta);
+}
+.outcomes-row > div:nth-child(2) .outcome-icon{ background: var(--curio-mint); }
+.outcomes-row > div:nth-child(3) .outcome-icon{ background: var(--curio-geel); }
+.outcomes-row > div:nth-child(4) .outcome-icon{ background: var(--curio-blauw); }
+.outcomes-row p{
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--curio-blauw);
+  margin: 0;
+  line-height: 1.25;
+}
 
 /* ---------- Jaarplanning / tijdlijn ---------- */
 .timeline{
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 44px;
   position: relative;
   flex-wrap: wrap;
-  gap: 24px 0;
+  gap: 28px 0;
 }
 .timeline::before{
   content: "";
   position: absolute;
-  top: 4px; left: 0; right: 0;
-  height: 1px;
-  background: var(--color-border);
+  top: 6px; left: 0; right: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: #DCD8F0;
 }
 .t-point{
   text-align: center;
-  font-size: .82rem;
-  max-width: 110px;
-  color: var(--color-muted);
+  font-size: .9rem;
+  font-weight: 600;
+  max-width: 120px;
+  color: var(--curio-blauw);
   position: relative;
 }
 .t-dot{
-  width: 9px; height: 9px;
+  width: 15px; height: 15px;
   border-radius: 50%;
-  background: var(--color-accent);
-  margin: 0 auto 10px;
+  background: var(--curio-magenta);
+  border: 3px solid var(--color-panel);
+  margin: 0 auto 12px;
   position: relative;
   z-index: 1;
 }
 
-/* ---------- Drie-koloms info (huiswerk / sfeer / groepen) ---------- */
+/* ---------- Drie-koloms info ---------- */
 .info-grid{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 .info-card{
-  padding: 22px;
+  padding: 30px 26px;
   background: var(--color-panel);
   border-radius: var(--radius);
 }
+.info-card:nth-child(2){ background: var(--curio-mint); }
+.info-card:nth-child(2) h3{ color: #fff; }
+.info-card:nth-child(2) p{ color: rgba(255,255,255,.92); }
 
 /* ---------- Regel-blok (zak/slaag) ---------- */
 .rule-box{
-  border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 24px;
-  background: var(--color-panel);
-  margin-top: 16px;
+  padding: 32px;
+  background: var(--curio-geel);
+  margin-top: 20px;
 }
+.rule-box p{ color: var(--curio-blauw); font-weight: 500; }
 
 /* ---------- Testimonial ---------- */
 .quote-box{
-  border-left: 3px solid var(--color-accent);
-  padding: 20px 28px;
-  margin-top: 16px;
-  background: var(--color-panel);
-  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--curio-blauw);
+  color: #fff;
+  padding: 44px;
+  margin-top: 20px;
+  border-radius: var(--radius-lg);
 }
 .quote-box p.quote-text{
-  font-size: 1.05rem;
-  color: var(--color-ink);
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 24px;
 }
 .quote-author{
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: .85rem;
-  color: var(--color-muted);
+  gap: 12px;
+  font-size: .9rem;
+  color: rgba(255,255,255,.75);
 }
 .avatar{
-  width: 34px; height: 34px;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  background: var(--color-border);
+  background: var(--curio-magenta);
 }
 
 /* ---------- Footer ---------- */
 footer{
-  padding: 48px 0;
-  background: var(--color-panel);
+  padding: 64px 0 48px;
+  background: var(--curio-blauw);
+  color: #fff;
 }
 footer .wrap{
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 40px;
 }
+footer .logo{ color: #fff; }
+footer p{ color: rgba(255,255,255,.75); max-width: 40ch; }
 footer h4{
-  font-size: .85rem;
-  margin: 0 0 12px;
+  font-size: .95rem;
+  color: #fff;
+  margin: 0 0 14px;
 }
 footer ul{
   list-style: none;
   margin: 0; padding: 0;
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 10px;
 }
-footer a{ color: var(--color-muted); font-size: .88rem; }
-footer a:hover{ color: var(--color-accent); }
+footer a{ color: rgba(255,255,255,.8); font-size: .92rem; }
+footer a:hover{ color: var(--curio-geel); }
 
-/* ---------- Responsief: mobiel ---------- */
-@media (max-width: 800px){
+/* ---------- Responsief ---------- */
+@media (max-width: 900px){
+  section{ padding: 64px 0; }
   .subjects-grid{ grid-template-columns: 1fr 1fr; }
   .two-col{ grid-template-columns: 1fr; }
   .outcomes-row{ grid-template-columns: 1fr 1fr; }
   .info-grid{ grid-template-columns: 1fr; }
   footer .wrap{ grid-template-columns: 1fr; }
-  .nav-links{ display: none; } /* eenvoudig: verberg menu op mobiel, evt. later hamburger toevoegen */
+  .nav-links{ display: none; }
 }
-@media (max-width: 520px){
+@media (max-width: 560px){
+  .wrap{ padding: 0 20px; }
   .subjects-grid{ grid-template-columns: 1fr; }
-  .outcomes-row{ grid-template-columns: 1fr 1fr; }
+  .quote-box{ padding: 28px; }
+  .carousel-item{ flex-basis: 260px; }
 }
