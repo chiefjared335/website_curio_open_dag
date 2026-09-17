@@ -174,12 +174,7 @@ section:nth-of-type(5){
   padding-bottom: 16px;
 }
 .logo{
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 1.6rem;
-  letter-spacing: -.04em;
-  color: var(--curio-blauw);
-  text-transform: lowercase;
+  img{ height: 50px; width: auto; display: block;}
 }
 .nav-links{
   display: flex;
