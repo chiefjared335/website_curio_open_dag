@@ -22,7 +22,6 @@ $vakken = [
   ["naam" => "keuzedeel", "beschrijving" => "een vak naar eigen keuze."],
   ["naam" => "challenges", "beschrijving" => "Projectmatig via sprints werken aan een challenge"],
   ["naam" => "masterworks", "beschrijving" => "Losstaande lessen van circa 45-60 minuten over een specifiek onderwerp, gegeven naast de challenge."],
-  ["naam" => "loopbaan", "beschrijving" => ""],
   ["naam" => "Engels", "beschrijving" => ""],
   ["naam" => "Nederlands", "beschrijving" => ""],
   ["naam" => "Rekenen", "beschrijving" => ""],
@@ -91,7 +90,7 @@ $testimonials = [
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <div class="wrap">
-      <div class="logo"><a href="https://www.curio.nl/mbo/ict/ict/software-developer"><img  src="images/test.png" alt="Curio Logo" ></a></div>
+      <div class="logo"><a href="https://www.curio.nl/mbo/ict/ict/software-developer" target="_blank"><img  src="images/logo.png" alt="Curio Logo" ></a></div>
       <ul class="nav-links">
         <li><a href="#vakken">Vakken</a></li>
         <li><a href="#rooster">Rooster</a></li>
