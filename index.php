@@ -110,8 +110,8 @@ $testimonials = [
     <div class="hero-overlay"></div>
 
     <div class="wrap hero-content">
-      <p class="eyebrow">Opleiding &middot; eerste jaar</p>
-      <h1>Zo ziet je eerste jaar eruit</h1>
+      <p class="eyebrow">Opleiding</p>
+      <h1>Zo ziet de opleiding software development  eruit</h1>
     </div>
   </section>
 
@@ -121,7 +121,7 @@ $testimonials = [
       <p class="eyebrow">Sectie 1</p>
       <div class="section-intro">
         <h2>Vakken in het eerste jaar</h2>
-        <p>Een overzicht van de vakken die je dit jaar krijgt, met een korte beschrijving.</p>
+        <p>Een overzicht van de vakken die je het eerste jaar krijgt, met een korte beschrijving.</p>
       </div>
       <div class="subjects-grid">
         <?php foreach ($vakken as $vak): ?>
